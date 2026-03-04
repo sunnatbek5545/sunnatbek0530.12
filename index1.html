@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calc Pro | Muhandislik</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Smart<span>City</span></div>
+        <ul class="nav-links">
+            <li><a href="./index.html">Bosh sahifa</a></li>
+            <li><a href="./index1.html">Interaktiv xizmatlar</a></li>
+            <li><a href="#video">Video Darslar</a></li>
+        </ul>
+
+    </nav>
+
+<div class="container">
+    <h2>🧮 Smart Calc Pro</h2>
+    <input type="text" id="calc-input" placeholder="Misol: x^2 + 4x - 5 = 0">
+
+    <button class="btn-solve" onclick="calculate('solve')">Yechish</button>
+
+    <div class="btn-grid">
+        <button class="btn-tool" onclick="calculate('diff')">Hosila (d/dx)</button>
+        <button class="btn-tool" onclick="calculate('integrate')">Integral (∫)</button>
+    </div>
+
+    <div id="result-box">
+        <div id="math-output">Natija bu yerda chiqadi...</div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "http://127.0.0.1:5000";
+
+    async function calculate(type) {
+        const inputVal = document.getElementById('calc-input').value;
+        const output = document.getElementById('math-output');
+
+        if(!inputVal) {
+            output.innerText = "Misol kiritilmadi!";
+            return;
+        }
+
+        output.innerHTML = "<i>Hisoblanmoqda...</i>";
+
+        const endpoint = `/${type}`;
+        const bodyData = type === 'solve' ? {equation: inputVal} : {expression: inputVal};
+
+        try {
+            const response = await fetch(API_URL + endpoint, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            });
+
+            const data = await response.json();
+
+            if(data.status === "success") {
+                let finalLatex = "";
+
+                if(type === 'solve' && data.type === 'equation') {
+                    // Yechimlarni x1, x2 ko'rinishida yig'ish
+                    finalLatex = data.solutions.map((s, i) => `x_{${i+1}} = ${s}`).join(", \\quad ");
+                } else {
+                    finalLatex = data.result;
+                }
+
+                // MathJax formatiga o'tkazish
+                output.innerHTML = `$$ ${finalLatex} $$`;
+
+                // Sahifani qayta render qilish
+                MathJax.typesetPromise();
+            } else {
+                output.innerHTML = `<span style="color:red">${data.error}</span>`;
+            }
+        } catch (err) {
+            output.innerText = "Server o'chiq! (Flaskni yoqing)";
+        }
+    }
+</script>
+
+</body>
+</html>

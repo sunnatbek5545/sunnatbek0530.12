@@ -1,412 +1,246 @@
-
-/* Main headers styles*/
-.main-header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0px 3px 16px 0px rgb(0 0 0 / 10%);
-  z-index: 10;
-
-}
-.main-header__brand {
-  display: inline-block;
-  vertical-align: middle;
+/* 1. O'zgaruvchilar va Asosiy sozlamalar */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --accent-color: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --text-primary: #ffffff;
+    --text-muted: #94a3b8;
+    --input-bg: #0f172a;
+    --result-bg: #ffffff;
+    --result-text: #1e293b;
+    --border-color: #334155;
 }
 
-.main-header__brand img{
-  width: 65px;
-}
-.main-navigation {
-  display: inline-block;
-  vertical-align: middle;
-
-}
-.main-navigation__items {
-  display: inline-block;
-  padding: 10px;
-
-}
-.main-navigation__items a {
-  color: #05364d;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 500;
-}
-.main-navigation__items a:hover{
-  color: #efb6df;
-}
-.main-navigation__items.active a{
-  color:  #efb6df;
-}
-/* main section*/
-.main-banner {
-    background: url(../main-banner.png);
-    background-position: center;
-    background-size: cover;
-    min-height: 890px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.main-section {
-padding: 100px 30px;
-margin: 50px 60px;
-
-}
-.main-section > div {
-  width: 50%;
-  float: left;
-}
-.main-section_imge {
-  text-align: right;
-}
-.main-section_salom {
-font-size: 16px;
-font-weight: 400;
-margin-bottom: 20px;
-letter-spacing: 2px;
-color:#797979;
-
-}
-.main-section_social a {
-color: #8fa1aa;
-font-size: 20px;
-display: inline-block;
-margin-right: 16px;
-cursor: pointer;
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column; /* Navbar uchun ustun ko'rinishida */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 120px; /* Navbar balandligini hisobga olgan holda */
 }
 
-.main-section_social a:hover i {
-color:#1c44e4
-}
-.main-section_ishlar {
-margin-top: 30px;
-border: none;
-background-color: #1c44e4;
-font-weight: 500;
-font-size: 14px;
-padding: 20px 40px;
-cursor: pointer;
-border-radius: 5px;
-
-}
-.main-section_ishlar:active {
-  color: wheat;
-  background-color: red;
-
+/* 2. Navbar dizayni */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
 }
 
-
-/* Statistics section*/
-.statistics__item {
-  display: inline-block;
-  width: 150px;
-  background: #f8faff;
-  text-align: center;
-  padding: 5px 10px;
-  margin-right: 20px;
-}
-.statistics_number {
-  font-size: 27px;
-  margin-bottom: 5px;
-  background: linear-gradient(90deg, #1345e6 0%, #ed239f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}
-.statistics__title {
-  font-size: 16px;
-  color: #797979;
-  font-weight: 300;
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
 }
 
-/*About me section*/
-
-
-.about-me {
-padding: 100px 0;
-}
-.about-me > div {
-   width: 50%;
-   float: left;
-}
-.about-me__image > img {
-  width: 90%;
-}
-.about-me__description {
-font-size: 14px;
-font-weight: 300;
-color: #797979;
-line-height: 27px;
-
-}
-.about-me__action {
-margin-top: 40px;
+.logo span {
+    color: var(--accent-color);
 }
 
-/* Services section style */
-.services {
-padding-top: 100px;
-
-}
-.service-card {
-  display: inline-block;
-  width: 30%;
-  padding: 60px 30px;
-  background-color: #f8faff;
-  margin-right: 3%;
-  text-align: center;
-  box-sizing: border-box;
-
-}
-.service-card__icon {
-  width: 30%;
-}
-.service-card__title {
-color: #05364d;
-font-size: 20px;
-font-weight: 500;
-margin-bottom: 20px;
-text-transform: uppercase;
-}
-.service-card__description {
-  font-size: 14px;
-  line-height: 27px;
-  font-weight: 300;
-  color: #797979;
-}
-.service-card__link {
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #05364d;
-  text-decoration: none;
-
-}
-.service-card:hover {
-  background-color: #5f30ff;
-}
-.service-card:hover .service-card__title
-.service-card:hover .service-card__description
-.service-card:hover .service-card__link {
-  color: #f8faff;
-  background-color: blue;
-}
-/*Cilents section style */
-.client {
-  padding-top: 100px;
-
-}
-.client-item__info {
-  padding: 50px;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
 
-.client-item > div {
-  width: 50%;
-  float: left;
-  box-sizing: border-box;
-
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
-.client-item__image img {
-width: 100%;
-
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: var(--accent-color);
 }
 
-.client-item__name {
-  font-size: 20px;
-  margin: bottom 4px;
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
 }
 
-.client-item__position {
-  font: size 14px;
-  font-weight: 300;
-  color: #5b6d75;
-
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    width: 100%;
 }
 
-.client-item__review {
-font-size: 14px;
-line-height: 27px;
-font-weight: 300;
-color: #5b6d75;
-
+/* 3. Kalkulyator Konteyneri (Kattalashtirilgan) */
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 30px;
+    width: 95%;
+    max-width: 850px; /* Kengaytirilgan o'lcham */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
 }
 
-.client-item__rate {
-color: #ffd805;
+h2 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 2.8rem; /* Katta sarlavha */
+    font-weight: 800;
 }
 
-/* Portfoli section style */
-.portfolio {
-  padding: 100px 0;
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
 }
 
-.portfolio-filters {
-  list-style: none;
-  padding-left: 0;
+/* 4. Kiritish maydoni */
+.input-wrapper {
+    margin-bottom: 25px;
 }
 
-.portfolio-filters li {
-  display: inline-block;
-  margin-right: 40px;
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin-top: 50px;
+input {
+    width: 100%;
+    padding: 22px 25px; /* Kengroq maydon */
+    border-radius: 15px;
+    border: 2px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 1.4rem; /* Katta shrift */
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.active {
-  color: #05364d;
+input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
 }
 
-.portfolio-items{
-  margin-top: 50px;
-  position: relative;
-  height: 600px; /* CHAP RASM BALANDLIGI */
-}
-
-
-.portfolio-item {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  width: 50%;
-  height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.portfolio-item-2 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 50%;
-}
-
-
-.portfolio-item-3 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%;
-  height: 50%;
-}
-
-.portfolio-item__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.portfolio-item__overlay  {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(19,69,230,0.9);
-  visibility: hidden;
-  z-index: 1;
-}
-
-.portfolio-item__info {
-  position: absolute;
-  bottom: 40px;
-  left: 75px;
-  color: white;
-  visibility: hidden;
-  z-index: 1;
-}
-
-.portfolio-item__info a {
-  color: white;
-  text-decoration: none;
-}
-
-.portfolio-item:hover .portfolio-item__overlay {
-  visibility: visible;
-  top: 25px;
-  left: 20px;
-}
-
-.portfolio-item:hover .portfolio-item__info {
-  visibility: visible;
-  bottom: 20px;
-  left: 50px;
-}
-
-/* Blog section styles*/
-.blog {
-  padding-top: 100px;
-}
-.blog-items {
-  margin-top: 50px;
-  display: inline-block;
-
-}
-.blog-item {
-  display: inline-block;
-  width: 30%;
-  margin-right: 3%;
-  box-sizing: border-box;
-}
-.blog-item:hover {
-  box-shadow: 0px 10px 20px rgb(5 54 77 / 10%);
-}
-.blog-item:hover .blog-item__info {
-  background-color: white;
-}
-.blog-item__image img {
-  width: 100%;
-}
-.blog-item__info {
-  background-color: #f8faff;
-  padding: 30px;
-  display: inline-block;
-  color: #797979;
-}
-.blog-item__main-info span {
-  font-size: 14px;
-  margin-right: 30px;
-  font-weight: lighter;
-}
-.blog-item__info i {
-  margin-right: 5px;
-}
-.blog-item__title {
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 15px;
-  color: #05364d;
-  font-weight: 700;
-
-}
-.blog-item__description {
-  line-height: 27px;
-  font-weight: lighter;
-  font-size: 15px;
-
-}
-.blog-item__learn-more {
-    font-size: 13px;
-    font-weight: 1000;
-    text-transform: uppercase;
-    color: #1345e6;
+/* 5. Tugmalar */
+button {
+    font-family: inherit;
     cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.btn-solve {
+    background: var(--accent-color);
+    color: #0f172a;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
-.blog-item__learn-more:hover {
-  color: #05364d;
+
+.btn-solve:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
 }
-/*Partners section style*/
-.partners {
-  padding-top: 100px;
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
 }
-.partner {
-  display: inline-block;
-  padding: 0px 30px;
+
+.btn-tool {
+    background: #334155;
+    color: white;
+    padding: 18px;
+    font-size: 1.1rem;
+}
+
+.btn-tool:hover {
+    background: #475569;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 6. Natija maydoni (Kattalashtirilgan) */
+#result-box {
+    margin-top: 40px;
+    padding: 35px;
+    border-radius: 20px;
+    background: var(--result-bg);
+    color: var(--result-text);
+    min-height: 150px; /* Formulalar sig'ishi uchun baland */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+#math-output {
+    font-size: 1.5rem; /* Formulalar yirik ko'rinishi uchun */
+    width: 100%;
+    text-align: center;
+}
+
+/* 7. Responsive (Mobil qurilmalar uchun) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .nav-links {
+        margin-top: 15px;
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    body {
+        padding-top: 160px;
+    }
+    .container {
+        padding: 30px;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    .btn-grid {
+        grid-template-columns: 1fr;
+    }
 }
